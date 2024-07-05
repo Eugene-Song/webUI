@@ -2,7 +2,7 @@
 	import fileSaver from 'file-saver';
 	const { saveAs } = fileSaver;
 
-	import { downloadDatabase, downloadLiteLLMConfig } from '$lib/apis/utils';
+	import { downloadDatabase, downloadLiteLLMConfig, downloadMembersList } from '$lib/apis/utils';
 	import { onMount, getContext } from 'svelte';
 	import { config, user } from '$lib/stores';
 	import { toast } from 'svelte-sonner';
@@ -42,6 +42,9 @@
 						on:click={() => {
 							// exportAllUserChats();
 							// exportAllMembers();
+							downloadMembersList(localStorage.token).catch((error) => {
+								toast.error(error);
+							});
 						}}
 					>
 						<div class=" self-center mr-3">
@@ -71,7 +74,6 @@
 						type="button"
 						on:click={() => {
 							// exportAllUserChats();
-
 							downloadDatabase(localStorage.token).catch((error) => {
 								toast.error(error);
 							});

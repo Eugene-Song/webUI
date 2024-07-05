@@ -147,7 +147,7 @@ async def download_members(user=Depends(get_admin_user)):
         writer = csv.writer(output)
 
         # Get the field names from the User model
-        field_names = [field.name for field in Users._meta.sorted_fields]
+        field_names = Users.get_user_field_names()
         writer.writerow(field_names)
 
         # set default parameters for the get_users method

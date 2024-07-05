@@ -213,6 +213,8 @@ class UsersTable:
             return user.api_key
         except:
             return None
-
+        
+    def get_user_field_names(self) -> List[str]:
+        return [field.name for field in User._meta.sorted_fields]
 
 Users = UsersTable(DB)
