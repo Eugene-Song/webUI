@@ -15,6 +15,7 @@
 	import Connections from './Settings/Connections.svelte';
 	import Documents from './Settings/Documents.svelte';
 	import WebSearch from './Settings/WebSearch.svelte';
+	// import Export from './Settings/Export.svelte';
 	import { config } from '$lib/stores';
 	import { getBackendConfig } from '$lib/apis';
 
@@ -317,6 +318,27 @@
 			</div>
 			<div class=" self-center">{$i18n.t('Database')}</div>
 		</button>
+
+		<button
+			class="px-2.5 py-2.5 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+			'export'
+				? 'bg-gray-200 dark:bg-gray-800'
+				: ' hover:bg-gray-300 dark:hover:bg-gray-850'}"
+			on:click={() => {
+				selectedTab = 'export';
+			}}
+		>
+			<div class=" self-center mr-2">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 16 16"
+					fill="currentColor"
+					class="w-4 h-4"
+					><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5" /></svg
+				>
+			</div>
+			<div class=" self-center">{$i18n.t('Export')}</div>
+		</button>
 	</div>
 
 	<div class="flex-1 mt-3 lg:mt-0 overflow-y-scroll">
@@ -385,6 +407,12 @@
 					toast.success($i18n.t('Settings saved successfully!'));
 				}}
 			/>
+			<!-- {:else if selectedTab === 'export'}
+			<Export
+				saveHandler={() => {
+					toast.success($i18n.t('Settings saved successfully!'));
+				}}
+			/> -->
 		{/if}
 	</div>
 </div>
