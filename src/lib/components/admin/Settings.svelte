@@ -15,7 +15,7 @@
 	import Connections from './Settings/Connections.svelte';
 	import Documents from './Settings/Documents.svelte';
 	import WebSearch from './Settings/WebSearch.svelte';
-	// import Export from './Settings/Export.svelte';
+	import Export from './Settings/Export.svelte';
 	import { config } from '$lib/stores';
 	import { getBackendConfig } from '$lib/apis';
 
@@ -407,12 +407,12 @@
 					toast.success($i18n.t('Settings saved successfully!'));
 				}}
 			/>
-			<!-- {:else if selectedTab === 'export'}
+			{:else if selectedTab === 'export'}
 			<Export
 				saveHandler={() => {
 					toast.success($i18n.t('Settings saved successfully!'));
 				}}
-			/> -->
+			/>
 		{/if}
 	</div>
 </div>
